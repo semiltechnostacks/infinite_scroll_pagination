@@ -121,7 +121,7 @@ class PagingController<PageKeyType, ItemType>
   }
   /// insert [newItem] list at [index] in the previously loaded list.
   void updateItemAt(int index, ItemType newItem) {
-    if(index < value.itemList.length){
+    if(index < value.itemList!.length){
       
      final previousItems = value.itemList ?? [];
      previousItems[index] = newItem;
