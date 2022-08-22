@@ -125,8 +125,9 @@ class PagingController<PageKeyType, ItemType>
       
      final previousItems = value.itemList ?? [];
      previousItems[index] = newItem;
+      final newItems=previousItems;
     value = PagingState<PageKeyType, ItemType>(
-      itemList: previousItems,
+      itemList: newItems,
       error: null,
       nextPageKey: nextPageKey,
     );
