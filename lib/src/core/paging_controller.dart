@@ -108,6 +108,17 @@ class PagingController<PageKeyType, ItemType>
       nextPageKey: nextPageKey,
     );
   }
+  
+  /// insert [newItem] list at [index] in the previously loaded list.
+  void insertItemAt(int index, ItemType newItem) {
+    final previousItems = value.itemList ?? [];
+    final itemList = [newItem, ...previousItems];
+    value = PagingState<PageKeyType, ItemType>(
+      itemList: itemList,
+      error: null,
+      nextPageKey: nextPageKey,
+    );
+  }
 
   /// Appends [newItems] to the previously loaded ones and sets the next page
   /// key to `null`.
