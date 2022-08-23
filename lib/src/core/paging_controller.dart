@@ -119,7 +119,7 @@ class PagingController<PageKeyType, ItemType>
       nextPageKey: nextPageKey,
     );
   }
-  /// insert [newItem] list at [index] in the previously loaded list.
+  /// update [newItem] list at [index] in the previously loaded list.
   void updateItemAt(int index, ItemType newItem) {
     if(index < value.itemList!.length){
       
@@ -132,7 +132,21 @@ class PagingController<PageKeyType, ItemType>
       nextPageKey: nextPageKey,
     );
     }
-   
+  }
+  
+    /// update [newItem] list at [index] in the previously loaded list.
+  void deleteItemAt(int index) {
+    if(index < value.itemList!.length){
+      
+     final previousItems = value.itemList ?? [];
+     previousItems.removeAt(index);
+      final newItems=previousItems;
+    value = PagingState<PageKeyType, ItemType>(
+      itemList: newItems,
+      error: null,
+      nextPageKey: nextPageKey,
+    );
+    }
   }
 
   /// Appends [newItems] to the previously loaded ones and sets the next page
